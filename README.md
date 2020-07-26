@@ -14,6 +14,7 @@ Enter the command pip install -r requirements.txt to install the required module
 ### Setup email config.
 
 Create a settings.ini file in the root repository and add the following variables.<br/>
+[settings]<br/>
 FROM_EMAIL=youremail@email.com <br/>
 FROM_PASSWORD=yourpassword <br/>
 TO_EMAIL=recepient@email.com <br/>
