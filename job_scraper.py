@@ -63,7 +63,7 @@ def send_mail(jobs_list):
 	from_password = config("FROM_PASSWORD")
 	to_email = config("TO_EMAIL")
 	message = MIMEMultipart()
-	#message = EmailMessage()
+
 	now = datetime.now().strftime("%d/%m/%Y at %H:%M:%S")
 	message['Subject'] = f'Job listings on {now}'
 	message['From'] = from_email
@@ -105,31 +105,31 @@ def extract_job_information_indeed(jobs, desired_result):
 	cols = []
 	extracted_info = []
 
-	if 'titles' in desired_result:
+	if 'titles' in headers:
 		titles = []
-		cols.append('titles')
+		cols.append('Title')
 		for element in job_elements:
 			titles.append(extract_job_title_indeed(element))
 		extracted_info.append(titles) 
 
-	if 'companies' in desired_result:
+	if 'companies' in headers:
 		companies = [] 
-		cols.append('companies')
+		cols.append('Companies')
 		for element in job_elements:
 			companies.append(extract_company_indeed(element)) 
 		extracted_info.append(companies) 
 
-	if 'links' in desired_result:
+	if 'links' in headers:
 		links = []
-		cols.append('links')
+		cols.append('Links')
 		for element in job_elements:
 			links.append(extract_link_indeed(element))
 		extracted_info.append(links)
 
 
-	if 'date_listed' in desired_result:
+	if 'date_listed' in headers:
 		dates = []
-		cols.append('date_listed')
+		cols.append('Listed')
 		for element in job_elements:
 			dates.append(extract_date_indeed(element))
 		extracted_info.append(dates)
@@ -200,7 +200,7 @@ Type 2 for Excel.\n> """))
 There has been an error.\n
 Please enter the number 1 for results in an email format\n
 or 2 for an Excel output.\n> """))
-		
-	desired_result = ['titles', 'companies', 'links', 'date_listed']
-	search_job_listings(job_title, location, desired_result, output)
+
+	headers = ['titles', 'companies', 'links', 'date_listed']
+	search_job_listings(job_title, location, headers, output)
 
