@@ -45,9 +45,11 @@ def search_job_listings(job_title, location, desired_result, output):
 		send_mail(job_list)
 
 	elif output == 2:
+		"""
 		filename = input("Please enter a filename\n.\
 			For example 'job_listings'.\n> ").split(".")[0]
-		save_jobs_to_excel(job_list, filename)
+		"""
+		save_jobs_to_excel(job_list, filename='job_results.xls')
 
 
 	print(f"{num_listings} new job postings retrieved from Indeed.")
